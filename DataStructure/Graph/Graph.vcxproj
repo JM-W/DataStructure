@@ -69,6 +69,8 @@
     <ClInclude Include="dGraph.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="dGraph.cpp" />
+    <ClCompile Include="GQueue.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

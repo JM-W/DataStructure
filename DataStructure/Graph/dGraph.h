@@ -3,7 +3,7 @@
 #include "fatal.h"
 
 
-#define NumVer 7
+#define NumVer 3
 
 #ifndef QGRAPH
 
@@ -21,12 +21,20 @@ public:
 		Vertex *Next;
 	};
 
+	class FirstVertex :public Vertex
+	{
+	public:
+		FirstVertex(int Ind) :Vertex(Ind),indgree(0){};
+	public:
+		int indgree;
+	};
+
 public:
 	dGraph()
 	{
 		for (int i = 1; i <= NumVer; i++)
 		{
-			edge[i] = new Vertex(i);
+			edge[i] = new FirstVertex(i);
 		}
 	};
 	~dGraph()
@@ -37,35 +45,15 @@ public:
 		}
 	};
 private:
-	Vertex *edge[NumVer+1];
+	FirstVertex *edge[NumVer+1];
 public:
-	void InsertEdge(int Index1, int Index2)
-	{
-		if (edge[Index1] == NULL)
-		{
-			Error("The vertex is not in this Graph!");
-			return;
-		}
-		Vertex *tmp,*ver;
-		ver = new Vertex(Index2);
-		tmp = edge[Index1]->Next;
-		edge[Index1]->Next = ver;
-		ver->Next = tmp;
-	}
-	void Print()
-	{
-		for (int i = 1; i <= NumVer; i++)
-		{
-			Vertex *p;
-			p = edge[i];
-			while (p != NULL)
-			{
-				std::cout << p->Index << ' ';
-				p = p->Next;
-			}
-			std::cout << std::endl;
-		}
-	}
+	void InsertEdge(int Index1, int Index2);
+
+	void Print();
+
+	void TopSort(int top[]);
+
+
 };
 
 #define QGRAPH

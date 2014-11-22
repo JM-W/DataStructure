@@ -5,7 +5,7 @@
 
 
 
-typedef dGraph::Vertex* ElementType;
+typedef int ElementType;
 
 
 class GQueue
@@ -25,52 +25,15 @@ public:
 	};
 	~GQueue(){};
 public:
-	void Enqueue(ElementType ele)
-	{
-		GList *ver = new GList(ele);
-		if (Ver == NULL)
-		{
-			Ver = ver;
-			End = ver;
-		}
-		else
-		{
-			End->Next = ver;
-			End = ver;
-			End->Next = NULL;
-		}
-	}
-	ElementType Dequeue()
-	{
-		if (Ver == NULL)
-		{
-			Error("The GQueue is none!");
-			return NULL;
-		}
-		else
-		{
-			GList *tmp;
-			tmp = Ver;
-			Ver = Ver->Next;
-			return tmp->Element;
-		}
-	};
-	void Print()
-	{
-		if (Ver == NULL)
-		{
-			Error("The GQueue is None!");
-			return;
-		}
-		GList *tmp;
-		tmp = Ver;
-		while (tmp!=NULL)
-		{
-			std::cout << tmp->Element->Index << " ";
-			tmp = tmp->Next;
-		}
-	}
-private:
+	void Enqueue(ElementType ele);
+
+	ElementType Dequeue();
+
+	void Print();
+
+	void DeleteQueue();
+
+public://private
 	GList *Ver;
 	GList *End;
 };
