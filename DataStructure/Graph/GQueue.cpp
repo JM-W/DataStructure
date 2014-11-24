@@ -3,6 +3,11 @@
 void GQueue::Enqueue(ElementType ele)
 {
 	GList *ver = new GList(ele);
+	if (ver == NULL)
+	{
+		Error("queue space is none!");
+		return;
+	}
 	if (Ver == NULL)
 	{
 		Ver = ver;
@@ -19,7 +24,6 @@ ElementType GQueue::Dequeue()
 {
 	if (Ver == NULL)
 	{
-		Error("The GQueue is none!");
 		return 0;
 	}
 	else
@@ -37,7 +41,7 @@ void GQueue::Print()
 {
 	if (Ver == NULL)
 	{
-		Error("The GQueue is None!");
+		Error("The GQueue is None P!");
 		return;
 	}
 	GList *tmp;

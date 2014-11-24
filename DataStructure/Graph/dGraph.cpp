@@ -66,3 +66,40 @@ void dGraph::TopSort(int top[NumVer+1])
 	if (--i != NumVer)
 		Error("The graph has a circle!");
 }
+void dGraph::UnWeight(Table *T)
+{
+	GQueue myGQueue;
+	for (int i = 0; i <= NumVer; i++)
+	{
+		if (T->tVertex[i]->known == false && T->tVertex[i]->distance == 0)
+		{
+			myGQueue.Enqueue(i);
+		}
+	}
+
+	int V=myGQueue.Dequeue();
+
+	if (V == 0)
+	{
+		Error("There is no start point!");
+		return;
+	}
+	Vertex *tmp;
+	while (V!=0)
+	{
+		T->tVertex[V]->known = true;
+		tmp = edge[V]->Next;
+		while ((tmp != NULL) && (T->tVertex[tmp->Index]->known == false))
+		{
+			int W = tmp->Index;
+			T->tVertex[W]->distance = T->tVertex[V]->distance + 1;
+			T->tVertex[W]->path = V;
+			tmp = tmp->Next;
+			myGQueue.Enqueue(W);
+		}
+		V = myGQueue.Dequeue();
+	}
+
+	myGQueue.DeleteQueue();
+	return;
+};

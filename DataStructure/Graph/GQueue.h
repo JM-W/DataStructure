@@ -33,10 +33,12 @@ public:
 
 	void DeleteQueue();
 
-public://private
+private://private
 	GList *Ver;
 	GList *End;
 };
+
+
 
 #define GQUEUE
 #endif // !GQUEUE

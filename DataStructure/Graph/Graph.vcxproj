@@ -64,12 +64,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GPQueue.h" />
     <ClInclude Include="GQueue.h" />
     <ClInclude Include="fatal.h" />
     <ClInclude Include="dGraph.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dGraph.cpp" />
+    <ClCompile Include="GPQueue.cpp" />
     <ClCompile Include="GQueue.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
